@@ -1,0 +1,24 @@
+{
+  "name": "@ablanc/crunchyroll",
+  "version": "1.0.0",
+  "description": "Node.js module to scrape crunchyroll website.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "scraping",
+    "crunchyroll",
+    "anime"
+  ],
+  "author": "Blanc Adrien",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "node-fetch": "^2.6.0"
+  }
+}
