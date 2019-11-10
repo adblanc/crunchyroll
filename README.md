@@ -20,5 +20,7 @@ const simulcastsAnimes = await crunchyroll.getSimulcastsAnime(0, 70); // 40 is t
 const dramaSliceOfLifeAnimes = await crunchyroll.getByGenresAnime(0, 40, ["drama", "slice_of_life"]);
 const fall2019Animes = await crunchyroll.getBySeasonAnime(0, 40, "fall_2019");
 const lastAnimes = await crunchyroll.getMostRecentsAnime(0, 40);
+
+const calendar = await crunchyroll.getCalendar("2019-11-11", true);
 ```
 
