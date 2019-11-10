@@ -16,7 +16,13 @@ async function saveAllAnimes() {
   console.timeEnd("animes");
 }
 
-saveAllAnimes();
+async function getCalendar() {
+  const calendar = await crunchyroll.getCalendar("2019-11-11", true);
+  console.log(calendar);
+}
+
+//saveAllAnimes();
+getCalendar();
 
 // crunchyroll.getPopularAnime(0, 20);
 // crunchyroll.getSimulcastsAnime(0, 70);
