@@ -27,4 +27,6 @@ const dramaSliceOfLifeAnimes = await crunchyroll.getByGenresAnime(0, 40, [
 ]);
 const fall2019Animes = await crunchyroll.getBySeasonAnime(0, 40, "fall_2019");
 const lastAnimes = await crunchyroll.getMostRecentsAnime(0, 40);
+
+const calendar = await crunchyroll.getCalendar("2019-11-11", true);
 ```
