@@ -7,17 +7,20 @@ function scrapeCrunchyrollAjax(html, length) {
     .map((i, elem) => {
       const a = $(elem).find("a");
       return {
-        link: `https://www.crunchyroll.com/${a.attr("href")}`,
+        link: `https://www.crunchyroll.com${a.attr("href")}`,
         img: $(a)
           .find("span > img")
           .attr("src"),
         title: $(a)
           .find("span.series-title.block.ellipsis")
           .text(),
-        episodes: $(a)
-          .find("span.series-data.block.ellipsis")
-          .text()
-          .trim()
+        episodes: parseInt(
+          $(a)
+            .find("span.series-data.block.ellipsis")
+            .text()
+            .trim()
+        ),
+        ref: "crunchyroll"
       };
     })
     .get();

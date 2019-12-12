@@ -18,13 +18,20 @@ async function saveAllAnimes() {
 
 async function getCalendar() {
   const calendar = await crunchyroll.getCalendar("2019-11-11", true);
-  console.log(calendar);
+  const animes = await crunchyroll.getPopularAnime(0, 20);
+  console.log(calendar[0].episodes);
 }
 
-//saveAllAnimes();
+async function getInfos(url) {
+  console.log(await crunchyroll.getAnimeInfos(url));
+}
+
+//getInfos("https://www.crunchyroll.com/fr/a-certain-magical-index");
+//getInfos("https://www.crunchyroll.com/fr/dr-stone");
+
 getCalendar();
 
-// crunchyroll.getPopularAnime(0, 20);
+//crunchyroll.getPopularAnime(0, 20);
 // crunchyroll.getSimulcastsAnime(0, 70);
 // crunchyroll.getByGenresAnime(0, 40, ["drama", "slice_of_life"]);
 // crunchyroll.getBySeasonAnime(0, 40, "fall_2019");

@@ -12,6 +12,8 @@ const { getAnimeList } = require("./src/list");
 
 const getCalendar = require("./src/calendar");
 
+const getAnimeInfos = require("./src/infos");
+
 module.exports = {
   getByGenresAnime,
   getBySeasonAnime,
@@ -20,5 +22,6 @@ module.exports = {
   getSimulcastsAnime,
   getEpisodes,
   getAnimeList,
-  getCalendar
+  getCalendar,
+  getAnimeInfos
 };

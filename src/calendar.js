@@ -19,7 +19,7 @@ module.exports = async function getCalendar(date, free) {
             .find("section > div > ol > li > article")
             .map((i, ep) => {
               return {
-                number: $(ep).attr("data-episode-num"),
+                number: parseInt($(ep).attr("data-episode-num")),
                 hour: $(ep)
                   .find("time")
                   .attr("datetime"),
@@ -31,7 +31,8 @@ module.exports = async function getCalendar(date, free) {
                   .attr("href"),
                 img: $(ep)
                   .find("a.js-poster-image-link img")
-                  .attr("src")
+                  .attr("src"),
+                ref: "crunchyroll"
               };
             })
             .get()

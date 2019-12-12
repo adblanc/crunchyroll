@@ -21,7 +21,12 @@ async function getEpisodes(url) {
         .find("a")
         .text()
         .toLowerCase()
-        .includes("doublage")
+        .includes("doublage") &&
+      !$(season)
+        .find("a")
+        .text()
+        .toLowerCase()
+        .includes("Russian")
   );
   const seasonNbr = seasons.length;
   const result = $(seasons)

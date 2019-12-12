@@ -9,10 +9,11 @@ async function getAnimeList() {
     .find(".text-link.ellipsis")
     .map((i, elem) => {
       return {
-        link: `https://www.crunchyroll.com/${$(elem).attr("href")}`,
+        link: `https://www.crunchyroll.com${$(elem).attr("href")}`,
         title: $(elem)
           .text()
-          .trim()
+          .trim(),
+        ref: "crunchyroll"
       };
     })
     .get();
