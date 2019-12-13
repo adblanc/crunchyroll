@@ -15,7 +15,20 @@ async function getAnimeInfos(link) {
   const result = {
     rating: parseFloat($("#showview_about_rate_widget").attr("content")),
     synopsis,
-    img: $("#sidebar_elements > li > img").attr("src")
+    img: $("#sidebar_elements > li > img").attr("src"),
+    tags: $("#sidebar_elements > li > ul > li > a.text-link")
+      .map((i, e) => $(e).text())
+      .get(),
+    genres: $("#sidebar_elements > li > ul > li > a.text-link")
+      .map((i, e) => {
+        if (
+          $(e)
+            .attr("href")
+            .includes("genres")
+        )
+          return $(e).text();
+      })
+      .get()
   };
   if (simulcast) result.simulcast = simulcast;
   return result;
