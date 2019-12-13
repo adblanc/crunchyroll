@@ -82,7 +82,8 @@ async function getByAlphaNum(letter) {
         ),
         link: `https://www.crunchyroll.com${$(elem)
           .find("div > a")
-          .attr("href")}`
+          .attr("href")}`,
+        ref: "crunchyroll"
       };
     })
     .get();
