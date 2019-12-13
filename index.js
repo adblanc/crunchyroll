@@ -3,7 +3,8 @@ const {
   getBySeasonAnime,
   getMostRecentsAnime,
   getPopularAnime,
-  getSimulcastsAnime
+  getSimulcastsAnime,
+  getByAlphaNum
 } = require("./src/anime.js");
 
 const { getEpisodes } = require("./src/episodes.js");
@@ -23,5 +24,6 @@ module.exports = {
   getEpisodes,
   getAnimeList,
   getCalendar,
-  getAnimeInfos
+  getAnimeInfos,
+  getByAlphaNum
 };

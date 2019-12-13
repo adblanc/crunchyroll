@@ -19,6 +19,8 @@ const list = await crunchyroll.getAnimeList();
 const episodes = await crunchyroll.getEpisodes(list[0].link);
 const infos = await crunchyroll.getAnimeInfos(list[0].link);
 
+const alphaAnimes = await crunchyroll.getByAlphaNum("a"); // "a-z" || numeric
+
 const popularAnimes = await crunchyroll.getPopularAnime(0, 20);
 const simulcastsAnimes = await crunchyroll.getSimulcastsAnime(0, 70); // 40 is the limit tho so > 40 will still return at most 40 animes.
 const dramaSliceOfLifeAnimes = await crunchyroll.getByGenresAnime(0, 40, [

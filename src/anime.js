@@ -65,10 +65,35 @@ async function getMostRecentsAnime(page = 0, length = undefined) {
   return result;
 }
 
+async function getByAlphaNum(letter) {
+  const url = `https://www.crunchyroll.com/fr/videos/anime/alpha?group=${letter}`;
+  const html = await requestCrunchyroll(url);
+  const $ = cheerio.load(html);
+  const result = $("#main_content > ul > li")
+    .map((i, elem) => {
+      return {
+        title: $(elem)
+          .find("div > a > div > span.series-title.block.ellipsis")
+          .text(),
+        episodes: parseInt(
+          $(elem)
+            .find("div > a > div > span.series-data.block")
+            .text()
+        ),
+        link: `https://www.crunchyroll.com${$(elem)
+          .find("div > a")
+          .attr("href")}`
+      };
+    })
+    .get();
+  return result;
+}
+
 module.exports = {
   getPopularAnime,
   getSimulcastsAnime,
   getMostRecentsAnime,
   getByGenresAnime,
-  getBySeasonAnime
+  getBySeasonAnime,
+  getByAlphaNum
 };

@@ -26,10 +26,16 @@ async function getInfos(url) {
   console.log(await crunchyroll.getAnimeInfos(url));
 }
 
+async function getAlpha(letter) {
+  console.log(await crunchyroll.getByAlphaNum(letter));
+}
+
+getAlpha("m");
+
 //getInfos("https://www.crunchyroll.com/fr/a-certain-magical-index");
 //getInfos("https://www.crunchyroll.com/fr/dr-stone");
 
-getCalendar();
+//getCalendar();
 
 //crunchyroll.getPopularAnime(0, 20);
 // crunchyroll.getSimulcastsAnime(0, 70);
