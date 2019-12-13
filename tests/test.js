@@ -30,10 +30,11 @@ async function getAlpha(letter) {
   console.log(await crunchyroll.getByAlphaNum(letter));
 }
 
-getAlpha("m");
+//getAlpha("m");
 
-//getInfos("https://www.crunchyroll.com/fr/a-certain-magical-index");
-//getInfos("https://www.crunchyroll.com/fr/dr-stone");
+getInfos("https://www.crunchyroll.com/fr/a-certain-magical-index");
+getInfos("https://www.crunchyroll.com/fr/dr-stone");
+getInfos("https://www.crunchyroll.com/fr/free-iwatobi-swim-club");
 
 //getCalendar();
 
