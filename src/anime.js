@@ -11,7 +11,7 @@ function scrapeCrunchyrollAjax(html, length) {
         img: $(a)
           .find("span > img")
           .attr("src"),
-        title: $(a)
+        name: $(a)
           .find("span.series-title.block.ellipsis")
           .text(),
         episodes: parseInt(
@@ -72,7 +72,7 @@ async function getByAlphaNum(letter) {
   const result = $("#main_content > ul > li")
     .map((i, elem) => {
       return {
-        title: $(elem)
+        name: $(elem)
           .find("div > a > div > span.series-title.block.ellipsis")
           .text(),
         episodes: parseInt(

@@ -23,7 +23,7 @@ module.exports = async function getCalendar(date, free) {
                 hour: $(ep)
                   .find("time")
                   .attr("datetime"),
-                title: $(ep)
+                name: $(ep)
                   .find("div h1 a cite")
                   .text(),
                 link: $(ep)

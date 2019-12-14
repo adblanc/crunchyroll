@@ -10,7 +10,7 @@ async function getAnimeList() {
     .map((i, elem) => {
       return {
         link: `https://www.crunchyroll.com${$(elem).attr("href")}`,
-        title: $(elem)
+        name: $(elem)
           .text()
           .trim(),
         ref: "crunchyroll"

@@ -32,7 +32,7 @@ async function getEpisodes(url) {
   const result = $(seasons)
     .map((i, elem) => {
       return {
-        title:
+        name:
           $(elem)
             .find(
               "a.season-dropdown.content-menu.block.text-link.strong.small-margin-bottom.open"
@@ -45,7 +45,7 @@ async function getEpisodes(url) {
           .map((i, elem) => {
             return {
               link: `https://www.crunchyroll.com${$(elem).attr("href")}`,
-              title: $(elem)
+              name: $(elem)
                 .find("img")
                 .attr("alt"),
               img:
