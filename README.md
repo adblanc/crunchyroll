@@ -1,6 +1,10 @@
 # Crunchyroll scrapper
 
-![package](https://img.shields.io/npm/v/@ablanc/crunchyroll)<br/>
+![package](https://img.shields.io/npm/v/@ablanc/crunchyroll)
+![build](https://img.shields.io/travis/adblanc/crunchyroll)
+![coverage](https://img.shields.io/coveralls/github/adblanc/crunchyroll)
+
+<br/>
 
 ## Description
 
@@ -32,3 +36,7 @@ const lastAnimes = await crunchyroll.getMostRecentsAnime(0, 40);
 
 const calendar = await crunchyroll.getCalendar("2019-11-11", true);
 ```
+## Tests
+
+Tests are run using Jest framework. <br/>
+`$ npm test`
