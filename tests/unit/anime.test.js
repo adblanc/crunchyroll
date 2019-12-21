@@ -1,6 +1,7 @@
 const crunchyroll = require("../../index");
 
 describe("anime", () => {
+  jest.setTimeout(30000);
   describe("popular animes", () => {
     it("should return anime list", async () => {
       const res = await crunchyroll.getPopularAnime(0, 20);
