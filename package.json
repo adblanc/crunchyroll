@@ -1,20 +1,23 @@
 {
   "name": "@ablanc/crunchyroll",
-  "version": "1.1.6",
+  "version": "2.0.0",
   "description": "Node.js module to scrape crunchyroll website.",
-  "main": "index.js",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "test": "jest",
+    "build": "tsc",
+    "test": "jest --coverage",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "keywords": [
     "nodejs",
     "scraping",
     "crunchyroll",
-    "anime"
+    "anime",
+    "typescript"
   ],
   "author": "Blanc Adrien",
   "license": "MIT",
@@ -23,7 +26,15 @@
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
+    "@types/cheerio": "^0.22.17",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.11.0",
+    "@types/node-fetch": "^2.5.5",
     "coveralls": "^3.0.9",
-    "jest": "^24.9.0"
+    "jest": "^25.3.0",
+    "ts-jest": "^25.3.1",
+    "ts-node": "^8.8.2",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.8.3"
   }
 }
