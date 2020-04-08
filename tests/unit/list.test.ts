@@ -1,6 +1,8 @@
 import * as crunchyroll from "../../src/index";
 import * as requestCrunchyroll from "../../src/request";
 
+jest.setTimeout(30000);
+
 describe("anime list", () => {
   it("should return a non empty array", async () => {
     const list = await crunchyroll.getAnimeList();

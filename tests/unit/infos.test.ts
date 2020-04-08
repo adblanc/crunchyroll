@@ -1,5 +1,7 @@
 import * as crunchyroll from "../../src/index";
 
+jest.setTimeout(30000);
+
 describe("anime  informations", () => {
   it("should return anime informations", async () => {
     const urls = [
