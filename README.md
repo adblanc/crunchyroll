@@ -28,20 +28,19 @@ const alphaAnimes = await crunchyroll.getByAlphaNum("a"); // "a-z" || numeric
 const popularAnimes = await crunchyroll.getPopularAnime();
 const simulcastsAnimes = await crunchyroll.getSimulcastsAnime(); // 40 is the limit tho so > 40 will still return at most 40 animes.
 const dramaSliceOfLifeAnimes = await crunchyroll.getByGenresAnime({
-page:0,
-length: 20,
-tags: ["drama"]
+  page: 0,
+  length: 20,
+  tags: ["drama"],
 });
 const fall2019Animes = await crunchyroll.getBySeasonAnime({
-season: "fall_2019"
+  season: "fall_2019",
 });
 const lastAnimes = await crunchyroll.getMostRecentsAnime();
 
 const calendar = await crunchyroll.getCalendar("2019-11-11");
 ```
+
 ## Tests
 
 Tests are run using Jest framework. <br/>
 `$ npm test`
-
-
