@@ -1,7 +1,7 @@
 # Crunchyroll scrapper
 
 ![package](https://img.shields.io/npm/v/@ablanc/crunchyroll)
-![build](https://img.shields.io/travis/adblanc/crunchyroll)
+![build](https://img.shields.io/circleci/build/github/adblanc/crunchyroll)
 ![coverage](https://img.shields.io/coveralls/github/adblanc/crunchyroll)
 
 <br/>
@@ -25,18 +25,23 @@ const infos = await crunchyroll.getAnimeInfos(list[0].link);
 
 const alphaAnimes = await crunchyroll.getByAlphaNum("a"); // "a-z" || numeric
 
-const popularAnimes = await crunchyroll.getPopularAnime(0, 20);
-const simulcastsAnimes = await crunchyroll.getSimulcastsAnime(0, 70); // 40 is the limit tho so > 40 will still return at most 40 animes.
-const dramaSliceOfLifeAnimes = await crunchyroll.getByGenresAnime(0, 40, [
-  "drama",
-  "slice_of_life"
-]);
-const fall2019Animes = await crunchyroll.getBySeasonAnime(0, 40, "fall_2019");
-const lastAnimes = await crunchyroll.getMostRecentsAnime(0, 40);
+const popularAnimes = await crunchyroll.getPopularAnime();
+const simulcastsAnimes = await crunchyroll.getSimulcastsAnime(); // 40 is the limit tho so > 40 will still return at most 40 animes.
+const dramaSliceOfLifeAnimes = await crunchyroll.getByGenresAnime({
+page:0,
+length: 20,
+tags: ["drama"]
+});
+const fall2019Animes = await crunchyroll.getBySeasonAnime({
+season: "fall_2019"
+});
+const lastAnimes = await crunchyroll.getMostRecentsAnime();
 
-const calendar = await crunchyroll.getCalendar("2019-11-11", true);
+const calendar = await crunchyroll.getCalendar("2019-11-11");
 ```
 ## Tests
 
 Tests are run using Jest framework. <br/>
 `$ npm test`
+
+
