@@ -20,15 +20,17 @@ interface CalendarArgs {
   free?: boolean;
 }
 
-type getCalendarFn = ({ date, free }?: CalendarArgs) => Promise<Day[]>;
+type getCalendarFn = (data?: CalendarArgs) => Promise<Day[]>;
+
+const getCalendarUrl = (data?: CalendarArgs) => {
+  return `https://www.crunchyroll.com/simulcastcalendar?filter=${
+    data?.free ? "free" : "premium"
+  }${data?.date ? data.date : ""}`;
+};
 
 export const getCalendar: getCalendarFn = async (data) => {
   try {
-    const html = await requestCrunchyroll(
-      `https://www.crunchyroll.com/simulcastcalendar?filter=${
-        data?.free ? "free" : "premium"
-      }${data?.date ? data.date : ""}`
-    );
+    const html = await requestCrunchyroll(getCalendarUrl(data));
     const $ = cheerio.load(html);
     const result = $("li.day")
       .map((i, elem) => {

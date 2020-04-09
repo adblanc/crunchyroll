@@ -23,19 +23,11 @@ interface AnimeArgsWithSeason extends AnimeArgs {
   season: seasonArg;
 }
 
-type getAnimeFn = ({ page, length }?: AnimeArgs) => Promise<AnimeInfos[]>;
+type getAnimeFn = (data?: AnimeArgs) => Promise<AnimeInfos[]>;
 
-type getByGenreFn = ({
-  page,
-  length,
-  tags,
-}?: AnimeArgsWithTags) => Promise<AnimeInfos[]>;
+type getByGenreFn = (data?: AnimeArgsWithTags) => Promise<AnimeInfos[]>;
 
-type getBySeasonFn = ({
-  page,
-  length,
-  season,
-}?: AnimeArgsWithSeason) => Promise<AnimeInfos[]>;
+type getBySeasonFn = (data?: AnimeArgsWithSeason) => Promise<AnimeInfos[]>;
 
 function scrapeCrunchyrollAjax(
   html: string,
