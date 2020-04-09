@@ -1,5 +1,6 @@
 import cheerio from "cheerio";
 import requestCrunchyroll from "./request";
+import { seasonArg } from "./types/seasons";
 
 interface AnimeInfos {
   link: string;
@@ -15,19 +16,21 @@ interface AnimeArgs {
 }
 
 interface AnimeArgsWithTags extends AnimeArgs {
-  tags: string | string[];
+  tags: genreArg[] | genreArg;
 }
 
 interface AnimeArgsWithSeason extends AnimeArgs {
-  season: string;
+  season: seasonArg;
 }
 
 type getAnimeFn = ({ page, length }?: AnimeArgs) => Promise<AnimeInfos[]>;
+
 type getByGenreFn = ({
   page,
   length,
   tags,
 }?: AnimeArgsWithTags) => Promise<AnimeInfos[]>;
+
 type getBySeasonFn = ({
   page,
   length,
@@ -83,14 +86,13 @@ export const getSimulcastsAnime: getAnimeFn = async (data = { page: 0 }) => {
 };
 
 export const getByGenresAnime: getByGenreFn = async (
-  data = { page: 0, tags: "" }
+  data = { page: 0, tags: [""] }
 ) => {
   try {
     const { tags, page, length } = data;
-    let stringTabs = "";
-    if (Array.isArray(tags)) stringTabs = tags.join(",");
-    else stringTabs = tags;
-    const url = `https://www.crunchyroll.com/fr/videos/anime/genres/ajax_page?pg=${page}&tagged=${stringTabs}`;
+    const url = `https://www.crunchyroll.com/fr/videos/anime/genres/ajax_page?pg=${page}&tagged=${
+      Array.isArray(tags) ? tags.join(",") : tags
+    }`;
     const html = await requestCrunchyroll(url);
     const result = scrapeCrunchyrollAjax(html, length);
     return result;
@@ -102,7 +104,7 @@ export const getByGenresAnime: getByGenreFn = async (
 
 //fall, summer, spring, winter _2019-2009
 export const getBySeasonAnime: getBySeasonFn = async (
-  data = { page: 0, season: "" }
+  data = { page: 0, season: "fall_2019" }
 ) => {
   try {
     const url = `https://www.crunchyroll.com/fr/videos/anime/seasons/ajax_page?pg=${data.page}&tagged[]=season:${data.season}`;

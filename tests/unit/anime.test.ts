@@ -40,7 +40,7 @@ describe("anime", () => {
     });
   });
 
-  describe("popular animes", () => {
+  describe("simulcast animes", () => {
     it("should return anime list with empty params", async () => {
       const res = await crunchyroll.getSimulcastsAnime();
       expect(res.length).toBeLessThanOrEqual(40);
@@ -132,45 +132,6 @@ describe("anime", () => {
   describe("by season animes", () => {
     it("should return anime list with no parameter", async () => {
       const res = await crunchyroll.getBySeasonAnime();
-      expect(res.length).toBeLessThanOrEqual(20);
-      res.forEach((anime) => {
-        expect(Object.keys(anime)).toEqual(
-          expect.arrayContaining(["name", "link", "img", "episodes", "ref"])
-        );
-      });
-    });
-    it("should return anime list", async () => {
-      const res = await crunchyroll.getBySeasonAnime({
-        page: 0,
-        length: 20,
-        season: "fall_2019",
-      });
-      expect(res.length).toBeLessThanOrEqual(20);
-      res.forEach((anime) => {
-        expect(Object.keys(anime)).toEqual(
-          expect.arrayContaining(["name", "link", "img", "episodes", "ref"])
-        );
-      });
-    });
-    it("should return an empty array if error", async () => {
-      const spy = jest
-        .spyOn(requestCrunchyroll, "default")
-        .mockImplementation(() => {
-          throw new Error("error");
-        });
-      const res = await crunchyroll.getBySeasonAnime({
-        page: 0,
-        length: 20,
-        season: "fall_2019",
-      });
-      expect(res.length).toBe(0);
-      spy.mockRestore();
-    });
-  });
-
-  describe("simulcasts animes", () => {
-    it("should return anime list with no parameters", async () => {
-      const res = await crunchyroll.getSimulcastsAnime();
       expect(res.length).toBeLessThanOrEqual(40);
       res.forEach((anime) => {
         expect(Object.keys(anime)).toEqual(
@@ -179,9 +140,10 @@ describe("anime", () => {
       });
     });
     it("should return anime list", async () => {
-      const res = await crunchyroll.getSimulcastsAnime({
+      const res = await crunchyroll.getBySeasonAnime({
         page: 0,
         length: 20,
+        season: "fall_2019",
       });
       expect(res.length).toBeLessThanOrEqual(20);
       res.forEach((anime) => {
@@ -196,9 +158,10 @@ describe("anime", () => {
         .mockImplementation(() => {
           throw new Error("error");
         });
-      const res = await crunchyroll.getSimulcastsAnime({
+      const res = await crunchyroll.getBySeasonAnime({
         page: 0,
         length: 20,
+        season: "fall_2019",
       });
       expect(res.length).toBe(0);
       spy.mockRestore();

@@ -2,12 +2,22 @@ import * as crunchyroll from "../../src/index";
 import * as requestCrunchyroll from "../../src/request";
 
 describe("calendar", () => {
+  it("should return a calendar even without parameters", async () => {
+    const calendar = await crunchyroll.getCalendar();
+    expect(calendar.length).toBe(7);
+  });
   it("should return a calendar array with 7 items", async () => {
-    const calendar = await crunchyroll.getCalendar("2020-04-08", true);
+    const calendar = await crunchyroll.getCalendar({
+      date: "2020-04-08",
+      free: true,
+    });
     expect(calendar.length).toBe(7);
   });
   it("should return a calendar with valid days", async () => {
-    const calendar = await crunchyroll.getCalendar("2020-04-08", true);
+    const calendar = await crunchyroll.getCalendar({
+      date: "2020-04-08",
+      free: true,
+    });
     calendar.forEach((day) => {
       expect(day).toHaveProperty("episodes");
       expect(day).toHaveProperty("date");
@@ -32,7 +42,10 @@ describe("calendar", () => {
       .mockImplementation(() => {
         throw new Error("error");
       });
-    const res = await crunchyroll.getCalendar("2020-04-08", true);
+    const res = await crunchyroll.getCalendar({
+      date: "2020-04-08",
+      free: true,
+    });
     expect(res.length).toBe(0);
     spy.mockRestore();
   });

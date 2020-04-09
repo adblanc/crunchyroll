@@ -15,14 +15,19 @@ interface Day {
   episodes: CalendarEpisode[];
 }
 
-type getCalendarFn = (date: string, free?: boolean) => Promise<Day[]>;
+interface CalendarArgs {
+  date?: string;
+  free?: boolean;
+}
 
-export const getCalendar: getCalendarFn = async (date, free) => {
+type getCalendarFn = ({ date, free }?: CalendarArgs) => Promise<Day[]>;
+
+export const getCalendar: getCalendarFn = async (data) => {
   try {
     const html = await requestCrunchyroll(
       `https://www.crunchyroll.com/simulcastcalendar?filter=${
-        free ? "free" : "premium"
-      }&date=${date}`
+        data?.free ? "free" : "premium"
+      }${data?.date ? data.date : ""}`
     );
     const $ = cheerio.load(html);
     const result = $("li.day")
