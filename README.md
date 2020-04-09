@@ -37,7 +37,12 @@ const fall2019Animes = await crunchyroll.getBySeasonAnime({
 });
 const lastAnimes = await crunchyroll.getMostRecentsAnime();
 
-const calendar = await crunchyroll.getCalendar("2019-11-11");
+const calendar = await crunchyroll.getCalendar();
+
+const calendarTwo = await crunchyroll.getCalendar({
+date: "2020-03-22",
+free: true,
+});
 ```
 
 ## Tests
