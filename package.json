@@ -1,6 +1,6 @@
 {
   "name": "@ablanc/crunchyroll",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Node.js module to scrape crunchyroll website.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
