@@ -1,6 +1,7 @@
 import cheerio from "cheerio";
 import requestCrunchyroll from "./request";
 import { seasonArg } from "./types/seasons";
+import { genreArg } from "./types/genres";
 
 interface AnimeInfos {
   link: string;

@@ -1,4 +1,4 @@
-type genreArg =
+export type genreArg =
   | "action"
   | "adventure"
   | "comedy"
