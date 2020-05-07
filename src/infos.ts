@@ -51,6 +51,7 @@ export const getAnimeInfos = async (link: string): Promise<AnimeInfos> => {
     };
     return result;
   } catch (err) {
+    console.log("C'est ce lien ", link);
     throw Error("Error while getting anime infos:" + err);
   }
 };

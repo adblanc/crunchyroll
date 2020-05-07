@@ -29,7 +29,7 @@ describe("calendar", () => {
             "name",
             "link",
             "epLink",
-            "img",
+            "image",
             "ref",
           ])
         );
